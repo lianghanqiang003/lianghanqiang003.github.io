@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: CoderRipple
-subtitle: 'coder的鸡毛蒜皮生活轨迹'
-description: 'Nas 外贸SOHO 程序员 JAVA Springboot '
-keywords: 'Nas 外贸SOHO 程序员 JAVA Springboot '
+title: 二十六退休
+subtitle: ''
+description: ''
+keywords: ''
 author: lianghanqiang
-language: en
+language: zh
 timezone: ''
 
 # URL
@@ -97,7 +97,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: anzhiyu
+theme: butterfly
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
