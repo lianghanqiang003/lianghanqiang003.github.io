@@ -22,7 +22,7 @@ menu:
 # Code Blocks (代碼相關)
 # --------------------------------------
 
-highlight_theme: light #  darker / pale night / light / ocean / mac / mac light / false
+highlight_theme: darker #  darker / pale night / light / ocean / mac / mac light / false
 highlight_copy: true # copy button
 highlight_lang: true # show the code language
 highlight_shrink: false # true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button
@@ -33,8 +33,9 @@ code_word_wrap: false
 # formal:
 #   icon: link || the description || color
 social:
-  # fab fa-github: https://github.com/xxxxx || Github || '#24292e'
-  # fas fa-envelope: mailto:xxxxxx@gmail.com || Email || '#4a7dbe'
+  fab fa-github: https://github.com/lianghanqiang003 || Github || '#00ffff'
+  fas fa-envelope: mailto:lianghanqiang003@gmail.com || Email || '#ff00ff'
+  fab fa-twitter: https://twitter.com/lianghanqiang003 || Twitter || '#ffff00'
 
 # Image (圖片設置)
 # --------------------------------------
@@ -45,7 +46,7 @@ favicon: /img/favicon.png
 # Avatar (頭像)
 avatar:
   img: https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png
-  effect: false
+  effect: true
 
 # Disable all banner image
 disable_top_img: true
@@ -686,16 +687,16 @@ canvas_fluttering_ribbon:
 # canvas_nest
 # https://github.com/hustcc/canvas-nest.js
 canvas_nest:
-  enable: false
-  color: '0,0,255' #color of lines, default: '0,0,0'; RGB values: (R,G,B).(note: use ',' to separate.)
-  opacity: 0.7 # the opacity of line (0~1), default: 0.5.
+  enable: true
+  color: '0,255,255' #color of lines, default: '0,0,0'; RGB values: (R,G,B).(note: use ',' to separate.)
+  opacity: 0.5 # the opacity of line (0~1), default: 0.5.
   zIndex: -1 # z-index property of the background, default: -1.
-  count: 99 # the number of lines, default: 99.
+  count: 150 # the number of lines, default: 99.
   mobile: false
 
 # Mouse click effects: fireworks (鼠標點擊效果: 煙火特效)
 fireworks:
-  enable: false
+  enable: true
   zIndex: 9999 # -1 or 9999
   mobile: false
 
@@ -706,25 +707,27 @@ click_heart:
 
 # Mouse click effects: words (鼠標點擊效果: 文字)
 clickShowText:
-  enable: false
+  enable: true
   text:
-    # - I
-    # - LOVE
-    # - YOU
+    - CYBERPUNK
+    - 2077
+    - NEON
+    - GLASS
+    - FUTURE
   fontSize: 15px
-  random: false
+  random: true
   mobile: false
 
 # Default display mode (網站默認的顯示模式)
 # light (default) / dark
-display_mode: light
+display_mode: dark
 
 # Beautify (美化頁面顯示)
 beautify:
-  enable: false
-  field: post # site/post
-  title-prefix-icon: # '\f0c1'
-  title-prefix-icon-color: # '#F47466'
+  enable: true
+  field: site # site/post
+  title-prefix-icon: '\f0c1'
+  title-prefix-icon-color: '#00ffff'
 
 # Global font settings
 # Don't modify the following settings unless you know how they work (非必要不要修改)
@@ -910,9 +913,9 @@ css_prefix: true
 # 插入代码到头部 </head> 之前 和 底部 </body> 之前
 inject:
   head:
-    # - <link rel="stylesheet" href="/xxx.css">
+    - <link rel="stylesheet" href="/css/cyberpunk-glass.css">
   bottom:
-    # - <script src="xxxx"></script>
+    - <script src="/js/cyberpunk-effects.js"></script>
 
 # CDN
 # Don't modify the following settings unless you know how they work
