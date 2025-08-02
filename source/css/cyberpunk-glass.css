@@ -1,0 +1,344 @@
+/* 毛玻璃赛博朋克风格自定义样式 */
+
+/* 全局变量 */
+:root {
+  --cyberpunk-primary: #00ffff;
+  --cyberpunk-secondary: #ff00ff;
+  --cyberpunk-accent: #ffff00;
+  --cyberpunk-dark: #0a0a0a;
+  --cyberpunk-darker: #000000;
+  --cyberpunk-light: #ffffff;
+  --cyberpunk-glow: 0 0 20px rgba(0, 255, 255, 0.5);
+  --cyberpunk-glow-pink: 0 0 20px rgba(255, 0, 255, 0.5);
+  --cyberpunk-glow-yellow: 0 0 20px rgba(255, 255, 0, 0.5);
+}
+
+/* 背景动画 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(45deg, transparent 30%, rgba(0, 255, 255, 0.1) 50%, transparent 70%),
+    linear-gradient(-45deg, transparent 30%, rgba(255, 0, 255, 0.1) 50%, transparent 70%),
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+  background-size: 400% 400%, 300% 300%, 200% 200%, 200% 200%;
+  animation: cyberpunk-bg 20s ease-in-out infinite;
+  z-index: -2;
+}
+
+@keyframes cyberpunk-bg {
+  0%, 100% {
+    background-position: 0% 50%, 0% 50%, 0% 0%, 100% 100%;
+  }
+  25% {
+    background-position: 100% 50%, 100% 50%, 100% 0%, 0% 100%;
+  }
+  50% {
+    background-position: 100% 100%, 0% 100%, 100% 100%, 0% 0%;
+  }
+  75% {
+    background-position: 0% 100%, 100% 0%, 0% 0%, 100% 0%;
+  }
+}
+
+/* 网格背景 */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: grid-move 15s linear infinite;
+  z-index: -1;
+}
+
+@keyframes grid-move {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+/* 毛玻璃效果容器 */
+.glass-container {
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 15px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+  animation: glass-shine 3s ease-in-out infinite;
+}
+
+@keyframes glass-shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* 导航栏毛玻璃效果 */
+#nav {
+  background: rgba(10, 10, 10, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+#nav .nav-item a {
+  color: var(--cyberpunk-primary) !important;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
+  transition: all 0.3s ease !important;
+}
+
+#nav .nav-item a:hover {
+  color: var(--cyberpunk-light) !important;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.8) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 文章卡片毛玻璃效果 */
+.card-info {
+  background: rgba(10, 10, 10, 0.7) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 15px !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.card-info:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(0, 255, 255, 0.3) !important;
+  border-color: var(--cyberpunk-primary) !important;
+}
+
+/* 文章标题霓虹效果 */
+.card-info .card-title {
+  color: var(--cyberpunk-primary) !important;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
+  font-weight: bold !important;
+}
+
+.card-info:hover .card-title {
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.8) !important;
+}
+
+/* 侧边栏毛玻璃效果 */
+#aside-content {
+  background: rgba(10, 10, 10, 0.7) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 0, 255, 0.3) !important;
+  border-radius: 15px !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 头像霓虹边框 */
+#aside-content .avatar-img {
+  border: 2px solid var(--cyberpunk-primary) !important;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5) !important;
+  animation: avatar-glow 2s ease-in-out infinite alternate !important;
+}
+
+@keyframes avatar-glow {
+  0% {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5) !important;
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.8) !important;
+  }
+}
+
+/* 分类和标签霓虹效果 */
+.card-info .article-category a,
+.card-info .article-tag a {
+  background: rgba(255, 0, 255, 0.2) !important;
+  border: 1px solid rgba(255, 0, 255, 0.5) !important;
+  color: var(--cyberpunk-secondary) !important;
+  text-shadow: 0 0 5px rgba(255, 0, 255, 0.5) !important;
+  transition: all 0.3s ease !important;
+}
+
+.card-info .article-category a:hover,
+.card-info .article-tag a:hover {
+  background: rgba(255, 0, 255, 0.4) !important;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.6) !important;
+  transform: scale(1.05) !important;
+}
+
+/* 按钮霓虹效果 */
+.btn {
+  background: rgba(0, 255, 255, 0.2) !important;
+  border: 1px solid var(--cyberpunk-primary) !important;
+  color: var(--cyberpunk-primary) !important;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5) !important;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn:hover {
+  background: rgba(0, 255, 255, 0.4) !important;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 页脚毛玻璃效果 */
+#footer {
+  background: rgba(10, 10, 10, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-top: 1px solid rgba(255, 255, 0, 0.3) !important;
+}
+
+/* 滚动条霓虹效果 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 10, 10, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, var(--cyberpunk-primary), var(--cyberpunk-secondary));
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+}
+
+/* 代码块毛玻璃效果 */
+.highlight {
+  background: rgba(10, 10, 10, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 链接霓虹效果 */
+a {
+  color: var(--cyberpunk-primary) !important;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+a:hover {
+  color: var(--cyberpunk-light) !important;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.6) !important;
+}
+
+/* 标题霓虹效果 */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--cyberpunk-primary) !important;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
+}
+
+/* 搜索框毛玻璃效果 */
+#search-form {
+  background: rgba(10, 10, 10, 0.7) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 25px !important;
+}
+
+#search-form input {
+  background: transparent !important;
+  color: var(--cyberpunk-primary) !important;
+}
+
+#search-form input::placeholder {
+  color: rgba(0, 255, 255, 0.6) !important;
+}
+
+/* 分页毛玻璃效果 */
+.pagination {
+  background: rgba(10, 10, 10, 0.7) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 10px !important;
+}
+
+.pagination .page-number {
+  color: var(--cyberpunk-primary) !important;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3) !important;
+}
+
+.pagination .page-number.current {
+  background: rgba(0, 255, 255, 0.3) !important;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5) !important;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .glass-container {
+    margin: 10px;
+    border-radius: 10px;
+  }
+  
+  #nav {
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+  }
+}
+
+/* 加载动画 */
+@keyframes cyberpunk-loading {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  }
+}
+
+.loading {
+  animation: cyberpunk-loading 2s linear infinite;
+}

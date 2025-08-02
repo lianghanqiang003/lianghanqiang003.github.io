@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赛博朋克毛玻璃风格预览</title>
+    <style>
+        /* 导入赛博朋克样式 */
+        @import url('/css/cyberpunk-glass.css');
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .preview-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .demo-card {
+            margin: 20px 0;
+            padding: 30px;
+            border-radius: 15px;
+        }
+        
+        .demo-title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .demo-section {
+            margin: 40px 0;
+        }
+        
+        .demo-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .demo-item {
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .demo-button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-text {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+        
+        .demo-code {
+            background: rgba(10, 10, 10, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            margin: 15px 0;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <!-- 标题区域 -->
+        <div class="demo-card glass-container">
+            <h1 class="demo-title">赛博朋克毛玻璃风格</h1>
+            <p class="demo-text">
+                欢迎来到未来！这个升级为您的博客带来了充满科技感的赛博朋克风格，
+                包括毛玻璃效果、霓虹灯、动态背景和交互特效。
+            </p>
+        </div>
+        
+        <!-- 特效展示 -->
+        <div class="demo-section">
+            <h2>🎨 主要特效</h2>
+            <div class="demo-grid">
+                <div class="demo-card glass-container demo-item">
+                    <h3>毛玻璃效果</h3>
+                    <p>所有卡片和容器都采用毛玻璃背景，营造未来感</p>
+                    <div class="demo-code">
+                        backdrop-filter: blur(20px);
+                    </div>
+                </div>
+                
+                <div class="demo-card glass-container demo-item">
+                    <h3>霓虹灯效果</h3>
+                    <p>文字和边框都有霓虹发光效果</p>
+                    <div class="demo-code">
+                        text-shadow: 0 0 10px #00ffff;
+                    </div>
+                </div>
+                
+                <div class="demo-card glass-container demo-item">
+                    <h3>动态背景</h3>
+                    <p>多层渐变背景和移动网格线</p>
+                    <div class="demo-code">
+                        animation: cyberpunk-bg 20s;
+                    </div>
+                </div>
+                
+                <div class="demo-card glass-container demo-item">
+                    <h3>交互特效</h3>
+                    <p>鼠标跟随、点击烟花、键盘涟漪</p>
+                    <div class="demo-code">
+                        fireworks: enable: true;
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 颜色方案 -->
+        <div class="demo-section">
+            <h2>🎨 赛博朋克色彩方案</h2>
+            <div class="demo-grid">
+                <div class="demo-card glass-container demo-item">
+                    <h3 style="color: #00ffff;">主色调 - 霓虹蓝</h3>
+                    <p>#00ffff - 青色，用于主要文字和边框</p>
+                </div>
+                
+                <div class="demo-card glass-container demo-item">
+                    <h3 style="color: #ff00ff;">辅助色 - 霓虹粉</h3>
+                    <p>#ff00ff - 洋红色，用于分类和标签</p>
+                </div>
+                
+                <div class="demo-card glass-container demo-item">
+                    <h3 style="color: #ffff00;">强调色 - 霓虹黄</h3>
+                    <p>#ffff00 - 黄色，用于重要元素</p>
+                </div>
+                
+                <div class="demo-card glass-container demo-item">
+                    <h3 style="color: #0a0a0a;">深色背景</h3>
+                    <p>#0a0a0a - 深灰色，营造赛博朋克氛围</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 交互演示 -->
+        <div class="demo-section">
+            <h2>🎮 交互演示</h2>
+            <div class="demo-card glass-container">
+                <h3>试试这些交互效果：</h3>
+                <div style="text-align: center; margin: 20px 0;">
+                    <a href="#" class="demo-button btn">悬停查看霓虹效果</a>
+                    <a href="#" class="demo-button btn">点击触发烟花</a>
+                    <a href="#" class="demo-button btn">按空格键涟漪</a>
+                </div>
+                <p class="demo-text">
+                    • 将鼠标悬停在按钮上查看霓虹灯效果<br>
+                    • 点击页面任意位置触发烟花特效<br>
+                    • 按空格键或回车键创建涟漪效果<br>
+                    • 滚动页面体验视差效果
+                </p>
+            </div>
+        </div>
+        
+        <!-- 技术特性 -->
+        <div class="demo-section">
+            <h2>⚙️ 技术特性</h2>
+            <div class="demo-grid">
+                <div class="demo-card glass-container demo-item">
+                    <h3>CSS 特性</h3>
+                    <ul style="text-align: left;">
+                        <li>backdrop-filter 毛玻璃效果</li>
+                        <li>CSS Grid 和 Flexbox 布局</li>
+                        <li>CSS 变量和自定义属性</li>
+                        <li>CSS 动画和过渡效果</li>
+                    </ul>
+                </div>
+                
+                <div class="demo-card glass-container demo-item">
+                    <h3>JavaScript 特效</h3>
+                    <ul style="text-align: left;">
+                        <li>Canvas 粒子系统</li>
+                        <li>鼠标跟随光标</li>
+                        <li>动态背景动画</li>
+                        <li>交互事件处理</li>
+                    </ul>
+                </div>
+                
+                <div class="demo-card glass-container demo-item">
+                    <h3>响应式设计</h3>
+                    <ul style="text-align: left;">
+                        <li>移动端优化</li>
+                        <li>自适应布局</li>
+                        <li>触摸友好交互</li>
+                        <li>性能优化</li>
+                    </ul>
+                </div>
+                
+                <div class="demo-card glass-container demo-item">
+                    <h3>浏览器兼容</h3>
+                    <ul style="text-align: left;">
+                        <li>现代浏览器支持</li>
+                        <li>Safari 毛玻璃效果</li>
+                        <li>Firefox 动画支持</li>
+                        <li>Chrome 最佳性能</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 使用说明 -->
+        <div class="demo-section">
+            <h2>📖 使用说明</h2>
+            <div class="demo-card glass-container">
+                <h3>如何应用这些效果到您的博客：</h3>
+                <div class="demo-code">
+# 1. 生成静态文件
+hexo clean && hexo generate
+
+# 2. 本地预览
+hexo server
+
+# 3. 部署到GitHub Pages
+hexo deploy
+                </div>
+                <p class="demo-text">
+                    所有特效已经集成到您的Hexo博客中，包括：
+                    <br>• 毛玻璃赛博朋克样式文件
+                    <br>• 动态特效JavaScript脚本
+                    <br>• 优化的主题配置
+                    <br>• 响应式设计支持
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 加载JavaScript特效 -->
+    <script src="/js/cyberpunk-effects.js"></script>
+</body>
+</html>
