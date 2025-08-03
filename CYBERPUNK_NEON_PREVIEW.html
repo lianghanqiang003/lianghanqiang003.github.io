@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>霓虹灯赛博朋克风格预览</title>
+    <link rel="stylesheet" href="/css/cyberpunk-glass.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+        
+        .preview-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .demo-section {
+            margin: 40px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .demo-title {
+            color: var(--cyberpunk-primary);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            margin-bottom: 20px;
+        }
+        
+        .demo-button {
+            background: rgba(0, 255, 255, 0.2);
+            border: 2px solid var(--cyberpunk-primary);
+            color: var(--cyberpunk-primary);
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-button:hover {
+            background: rgba(0, 255, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+            transform: translateY(-2px);
+        }
+        
+        .demo-card {
+            background: rgba(42, 42, 42, 0.8);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 255, 255, 0.3);
+            border-color: rgba(0, 255, 255, 0.6);
+        }
+        
+        .demo-link {
+            color: var(--cyberpunk-primary);
+            text-decoration: none;
+            margin: 10px;
+            display: inline-block;
+        }
+        
+        .demo-link:hover {
+            color: var(--cyberpunk-light);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+        
+        .neon-text-demo {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        
+        .avatar-demo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--cyberpunk-primary), var(--cyberpunk-secondary));
+            margin: 20px;
+            position: relative;
+        }
+        
+        .avatar-demo::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, var(--cyberpunk-primary), var(--cyberpunk-secondary), var(--cyberpunk-accent));
+            border-radius: 50%;
+            z-index: -1;
+            animation: avatar-border-rotate 3s linear infinite;
+        }
+        
+        @keyframes avatar-border-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .nav-demo {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .nav-demo a {
+            color: var(--cyberpunk-primary);
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-demo a:hover {
+            color: var(--cyberpunk-light);
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+            background: rgba(0, 255, 255, 0.2);
+        }
+        
+        .scrollbar-demo {
+            height: 200px;
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .scrollbar-demo p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <h1 class="demo-title neon-text-demo">霓虹灯赛博朋克风格预览</h1>
+        
+        <div class="demo-section">
+            <h2 class="demo-title">霓虹灯串效果</h2>
+            <p>页面两侧有垂直的霓虹灯串，顶部和底部有水平霓虹灯条</p>
+        </div>
+        
+        <div class="demo-section">
+            <h2 class="demo-title">导航栏霓虹效果</h2>
+            <div class="nav-demo">
+                <a href="#" class="neon-sign">首页</a>
+                <a href="#" class="neon-sign">笔记</a>
+                <a href="#" class="neon-sign">工具</a>
+                <a href="#" class="neon-sign">外贸</a>
+                <a href="#" class="neon-sign">电商</a>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2 class="demo-title">文章卡片霓虹效果</h2>
+            <div class="demo-card">
+                <h3 class="neon-sign">示例文章标题</h3>
+                <p>这是一个示例文章卡片，展示了霓虹灯效果。鼠标悬停时会看到霓虹光晕效果。</p>
+                <div style="margin-top: 15px;">
+                    <span style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #ffffff; padding: 2px 8px; border-radius: 4px; margin-right: 10px;">分类</span>
+                    <span style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #ffffff; padding: 2px 8px; border-radius: 4px;">标签</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2 class="demo-title">按钮霓虹效果</h2>
+            <button class="demo-button neon-border">霓虹按钮</button>
+            <button class="demo-button neon-border">点击效果</button>
+            <button class="demo-button neon-border">脉冲动画</button>
+        </div>
+        
+        <div class="demo-section">
+            <h2 class="demo-title">头像霓虹边框</h2>
+            <div class="avatar-demo"></div>
+            <p>头像周围有旋转的霓虹边框效果</p>
+        </div>
+        
+        <div class="demo-section">
+            <h2 class="demo-title">链接霓虹效果</h2>
+            <a href="#" class="demo-link neon-text">霓虹链接效果</a>
+            <a href="#" class="demo-link neon-text">悬停发光</a>
+            <a href="#" class="demo-link neon-text">下划线动画</a>
+        </div>
+        
+        <div class="demo-section">
+            <h2 class="demo-title">滚动条霓虹效果</h2>
+            <div class="scrollbar-demo">
+                <p>这是一个演示滚动条霓虹效果的容器。滚动时会看到霓虹色的滚动条。</p>
+                <p>滚动条具有渐变色彩和发光效果，与整体霓虹灯风格保持一致。</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                <p>Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2 class="demo-title">霓虹招牌文字</h2>
+            <div class="neon-text-demo neon-text">重庆味 肥肥牛肉</div>
+            <div class="neon-text-demo neon-text">避抢州火锅</div>
+            <div class="neon-text-demo neon-text">火锅</div>
+        </div>
+        
+        <div class="demo-section">
+            <h2 class="demo-title">毛玻璃效果</h2>
+            <p>整个页面使用了毛玻璃效果，背景有动态的渐变和网格动画。</p>
+            <p>所有卡片和容器都具有半透明的毛玻璃背景，配合霓虹灯效果营造出赛博朋克的氛围。</p>
+        </div>
+    </div>
+    
+    <script src="/js/cyberpunk-effects.js"></script>
+</body>
+</html>

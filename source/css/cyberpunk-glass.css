@@ -1,19 +1,23 @@
-/* 毛玻璃赛博朋克风格自定义样式 */
+/* 毛玻璃赛博朋克风格自定义样式 - 霓虹灯版本 */
 
 /* 全局变量 */
 :root {
   --cyberpunk-primary: #00ffff;
   --cyberpunk-secondary: #ff00ff;
   --cyberpunk-accent: #ffff00;
+  --cyberpunk-red: #ff0066;
+  --cyberpunk-pink: #ff69b4;
+  --cyberpunk-orange: #ff6600;
   --cyberpunk-dark: #0a0a0a;
   --cyberpunk-darker: #000000;
   --cyberpunk-light: #ffffff;
   --cyberpunk-glow: 0 0 20px rgba(0, 255, 255, 0.5);
   --cyberpunk-glow-pink: 0 0 20px rgba(255, 0, 255, 0.5);
   --cyberpunk-glow-yellow: 0 0 20px rgba(255, 255, 0, 0.5);
+  --cyberpunk-glow-red: 0 0 20px rgba(255, 0, 102, 0.5);
 }
 
-/* 背景动画 */
+/* 背景动画 - 增强版 */
 body::before {
   content: '';
   position: fixed;
@@ -22,31 +26,32 @@ body::before {
   width: 100%;
   height: 100%;
   background: 
-    linear-gradient(45deg, transparent 30%, rgba(0, 255, 255, 0.1) 50%, transparent 70%),
-    linear-gradient(-45deg, transparent 30%, rgba(255, 0, 255, 0.1) 50%, transparent 70%),
-    radial-gradient(circle at 20% 80%, rgba(255, 255, 0, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
-  background-size: 400% 400%, 300% 300%, 200% 200%, 200% 200%;
-  animation: cyberpunk-bg 20s ease-in-out infinite;
+    linear-gradient(45deg, transparent 30%, rgba(0, 255, 255, 0.15) 50%, transparent 70%),
+    linear-gradient(-45deg, transparent 30%, rgba(255, 0, 255, 0.15) 50%, transparent 70%),
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 0, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 0, 102, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 105, 180, 0.1) 0%, transparent 70%);
+  background-size: 400% 400%, 300% 300%, 200% 200%, 200% 200%, 300% 300%;
+  animation: cyberpunk-bg 25s ease-in-out infinite;
   z-index: -2;
 }
 
 @keyframes cyberpunk-bg {
   0%, 100% {
-    background-position: 0% 50%, 0% 50%, 0% 0%, 100% 100%;
+    background-position: 0% 50%, 0% 50%, 0% 0%, 100% 100%, 50% 50%;
   }
   25% {
-    background-position: 100% 50%, 100% 50%, 100% 0%, 0% 100%;
+    background-position: 100% 50%, 100% 50%, 100% 0%, 0% 100%, 0% 100%;
   }
   50% {
-    background-position: 100% 100%, 0% 100%, 100% 100%, 0% 0%;
+    background-position: 100% 100%, 0% 100%, 100% 100%, 0% 0%, 100% 0%;
   }
   75% {
-    background-position: 0% 100%, 100% 0%, 0% 0%, 100% 0%;
+    background-position: 0% 100%, 100% 0%, 0% 0%, 100% 0%, 0% 0%;
   }
 }
 
-/* 网格背景 */
+/* 网格背景 - 增强版 */
 body::after {
   content: '';
   position: fixed;
@@ -55,10 +60,12 @@ body::after {
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: grid-move 15s linear infinite;
+    linear-gradient(rgba(0, 255, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(rgba(255, 0, 255, 0.1) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255, 0, 255, 0.1) 2px, transparent 2px);
+  background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px;
+  animation: grid-move 20s linear infinite;
   z-index: -1;
 }
 
@@ -71,7 +78,80 @@ body::after {
   }
 }
 
-/* 毛玻璃效果容器 - iOS风格 */
+/* 霓虹灯串效果 - 模拟图片中的垂直霓虹灯 */
+.neon-string {
+  position: fixed;
+  width: 4px;
+  height: 100vh;
+  background: linear-gradient(to bottom, 
+    var(--cyberpunk-red) 0%, 
+    var(--cyberpunk-pink) 25%, 
+    var(--cyberpunk-orange) 50%, 
+    var(--cyberpunk-red) 75%, 
+    var(--cyberpunk-pink) 100%);
+  box-shadow: 
+    0 0 10px var(--cyberpunk-red),
+    0 0 20px var(--cyberpunk-red),
+    0 0 30px var(--cyberpunk-red);
+  animation: neon-flicker 2s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+.neon-string.left {
+  left: 20px;
+}
+
+.neon-string.right {
+  right: 20px;
+}
+
+@keyframes neon-flicker {
+  0% {
+    opacity: 0.8;
+    box-shadow: 
+      0 0 10px var(--cyberpunk-red),
+      0 0 20px var(--cyberpunk-red),
+      0 0 30px var(--cyberpunk-red);
+  }
+  100% {
+    opacity: 1;
+    box-shadow: 
+      0 0 15px var(--cyberpunk-red),
+      0 0 25px var(--cyberpunk-red),
+      0 0 35px var(--cyberpunk-red);
+  }
+}
+
+/* 霓虹招牌效果 */
+.neon-sign {
+  position: relative;
+  color: var(--cyberpunk-primary);
+  text-shadow: 
+    0 0 5px var(--cyberpunk-primary),
+    0 0 10px var(--cyberpunk-primary),
+    0 0 15px var(--cyberpunk-primary),
+    0 0 20px var(--cyberpunk-primary);
+  animation: neon-sign-flicker 3s ease-in-out infinite alternate;
+}
+
+@keyframes neon-sign-flicker {
+  0% {
+    text-shadow: 
+      0 0 5px var(--cyberpunk-primary),
+      0 0 10px var(--cyberpunk-primary),
+      0 0 15px var(--cyberpunk-primary);
+  }
+  100% {
+    text-shadow: 
+      0 0 5px var(--cyberpunk-primary),
+      0 0 10px var(--cyberpunk-primary),
+      0 0 15px var(--cyberpunk-primary),
+      0 0 20px var(--cyberpunk-primary),
+      0 0 25px var(--cyberpunk-primary);
+  }
+}
+
+/* 毛玻璃效果容器 - 增强版 */
 .glass-container {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
@@ -80,7 +160,8 @@ body::after {
   border-radius: 15px;
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 20px rgba(0, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -92,8 +173,8 @@ body::after {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
-  animation: glass-shine 3s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+  animation: glass-shine 4s ease-in-out infinite;
 }
 
 @keyframes glass-shine {
@@ -105,70 +186,121 @@ body::after {
   }
 }
 
-/* 导航栏毛玻璃效果 - iOS风格 */
+/* 导航栏毛玻璃效果 - 增强霓虹效果 */
 #nav {
   background: rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    0 0 30px rgba(0, 255, 255, 0.2) !important;
 }
 
 #nav .nav-item a {
   color: var(--cyberpunk-primary) !important;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
+  text-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.5),
+    0 0 20px rgba(0, 255, 255, 0.3) !important;
   transition: all 0.3s ease !important;
+  position: relative;
+}
+
+#nav .nav-item a::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyberpunk-primary), var(--cyberpunk-secondary));
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px var(--cyberpunk-primary);
+}
+
+#nav .nav-item a:hover::before {
+  width: 100%;
 }
 
 #nav .nav-item a:hover {
   color: var(--cyberpunk-light) !important;
-  text-shadow: 0 0 15px rgba(0, 255, 255, 0.8) !important;
+  text-shadow: 
+    0 0 15px rgba(0, 255, 255, 0.8),
+    0 0 25px rgba(0, 255, 255, 0.5) !important;
   transform: translateY(-2px) !important;
 }
 
-/* 文章卡片样式 - 与导航栏一致 */
+/* 文章卡片样式 - 增强霓虹效果 */
 .card-info {
-  background: #2a2a2a !important;
-  border: none !important;
+  background: rgba(42, 42, 42, 0.8) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
   border-radius: 8px !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(0, 255, 255, 0.1) !important;
   transition: all 0.3s ease !important;
   margin-bottom: 15px !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.card-info:hover::before {
+  left: 100%;
 }
 
 .card-info:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(0, 255, 255, 0.3) !important;
+  border-color: rgba(0, 255, 255, 0.6) !important;
 }
 
-/* 文章标题样式 - 白色文字 */
+/* 文章标题样式 - 霓虹效果 */
 .card-info .card-title {
   color: #ffffff !important;
-  text-shadow: none !important;
+  text-shadow: 
+    0 0 5px rgba(255, 255, 255, 0.5),
+    0 0 10px rgba(255, 255, 255, 0.3) !important;
   font-weight: 600 !important;
   font-size: 1.1em !important;
+  transition: all 0.3s ease !important;
 }
 
 .card-info:hover .card-title {
-  color: #ffffff !important;
-  text-shadow: none !important;
+  color: var(--cyberpunk-primary) !important;
+  text-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.6),
+    0 0 20px rgba(0, 255, 255, 0.4) !important;
 }
 
-/* 文章卡片内所有文字样式 - 白色 */
+/* 文章卡片内所有文字样式 - 增强效果 */
 .card-info p,
 .card-info .article-meta,
 .card-info .article-date,
 .card-info .article-summary {
   color: #ffffff !important;
-  text-shadow: none !important;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3) !important;
 }
 
 .card-info .article-meta i,
 .card-info .article-date i {
-  color: #cccccc !important;
+  color: var(--cyberpunk-primary) !important;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5) !important;
 }
 
-/* 侧边栏毛玻璃效果 - iOS风格 */
+/* 侧边栏毛玻璃效果 - 增强版 */
 #aside-content {
   background: rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(20px) !important;
@@ -177,151 +309,307 @@ body::after {
   border-radius: 15px !important;
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 30px rgba(255, 0, 255, 0.1) !important;
 }
 
-/* 头像霓虹边框 */
+/* 头像霓虹边框 - 增强版 */
 #aside-content .avatar-img {
-  border: 2px solid var(--cyberpunk-primary) !important;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5) !important;
-  animation: avatar-glow 2s ease-in-out infinite alternate !important;
+  border: 3px solid var(--cyberpunk-primary) !important;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.5),
+    0 0 40px rgba(0, 255, 255, 0.3) !important;
+  animation: avatar-glow 3s ease-in-out infinite alternate !important;
+  position: relative;
+}
+
+#aside-content .avatar-img::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, var(--cyberpunk-primary), var(--cyberpunk-secondary), var(--cyberpunk-accent));
+  border-radius: 50%;
+  z-index: -1;
+  animation: avatar-border-rotate 3s linear infinite;
+}
+
+@keyframes avatar-border-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes avatar-glow {
   0% {
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5) !important;
+    box-shadow: 
+      0 0 20px rgba(0, 255, 255, 0.5),
+      0 0 40px rgba(0, 255, 255, 0.3) !important;
   }
   100% {
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.8) !important;
+    box-shadow: 
+      0 0 30px rgba(0, 255, 255, 0.8),
+      0 0 50px rgba(0, 255, 255, 0.5) !important;
   }
 }
 
-/* 分类和标签样式 - 与导航栏一致 */
+/* 分类和标签样式 - 霓虹效果 */
 .card-info .article-category a,
 .card-info .article-tag a {
   background: rgba(255, 255, 255, 0.1) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   color: #ffffff !important;
-  text-shadow: none !important;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5) !important;
   transition: all 0.3s ease !important;
   border-radius: 4px !important;
   padding: 2px 8px !important;
   font-size: 0.9em !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-info .article-category a::before,
+.card-info .article-tag a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.3s ease;
+}
+
+.card-info .article-category a:hover::before,
+.card-info .article-tag a:hover::before {
+  left: 100%;
 }
 
 .card-info .article-category a:hover,
 .card-info .article-tag a:hover {
   background: rgba(255, 255, 255, 0.2) !important;
-  box-shadow: none !important;
-  transform: none !important;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-1px) !important;
 }
 
-/* 按钮霓虹效果 */
+/* 按钮霓虹效果 - 增强版 */
 .btn {
   background: rgba(0, 255, 255, 0.2) !important;
-  border: 1px solid var(--cyberpunk-primary) !important;
+  border: 2px solid var(--cyberpunk-primary) !important;
   color: var(--cyberpunk-primary) !important;
-  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5) !important;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3) !important;
+  text-shadow: 
+    0 0 5px rgba(0, 255, 255, 0.5),
+    0 0 10px rgba(0, 255, 255, 0.3) !important;
+  box-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.3),
+    0 0 20px rgba(0, 255, 255, 0.1) !important;
   transition: all 0.3s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+  transition: left 0.3s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
 }
 
 .btn:hover {
   background: rgba(0, 255, 255, 0.4) !important;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6) !important;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.6),
+    0 0 30px rgba(0, 255, 255, 0.3) !important;
   transform: translateY(-2px) !important;
+  border-color: var(--cyberpunk-light) !important;
 }
 
-/* 页脚毛玻璃效果 - iOS风格 */
+/* 页脚毛玻璃效果 - 增强版 */
 #footer {
   background: rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 
+    0 -4px 20px rgba(0, 0, 0, 0.1),
+    0 0 30px rgba(255, 0, 255, 0.1) !important;
 }
 
-/* 滚动条霓虹效果 */
+/* 滚动条霓虹效果 - 增强版 */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
   background: rgba(10, 10, 10, 0.5);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, var(--cyberpunk-primary), var(--cyberpunk-secondary));
-  border-radius: 4px;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  background: linear-gradient(45deg, var(--cyberpunk-primary), var(--cyberpunk-secondary), var(--cyberpunk-accent));
+  border-radius: 5px;
+  box-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.5),
+    0 0 20px rgba(0, 255, 255, 0.3);
+  animation: scrollbar-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes scrollbar-glow {
+  0% {
+    box-shadow: 
+      0 0 10px rgba(0, 255, 255, 0.5),
+      0 0 20px rgba(0, 255, 255, 0.3);
+  }
+  100% {
+    box-shadow: 
+      0 0 15px rgba(0, 255, 255, 0.8),
+      0 0 25px rgba(0, 255, 255, 0.5);
+  }
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.8),
+    0 0 30px rgba(0, 255, 255, 0.5);
 }
 
-/* 代码块毛玻璃效果 - iOS风格 */
+/* 代码块毛玻璃效果 - 增强版 */
 .highlight {
   background: rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 10px !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    0 0 30px rgba(0, 255, 255, 0.1) !important;
 }
 
-/* 链接霓虹效果 */
+/* 链接霓虹效果 - 增强版 */
 a {
   color: var(--cyberpunk-primary) !important;
-  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3) !important;
+  text-shadow: 
+    0 0 5px rgba(0, 255, 255, 0.3),
+    0 0 10px rgba(0, 255, 255, 0.2) !important;
   transition: all 0.3s ease !important;
+  position: relative;
+}
+
+a::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--cyberpunk-primary), var(--cyberpunk-secondary));
+  transition: width 0.3s ease;
+  box-shadow: 0 0 5px var(--cyberpunk-primary);
+}
+
+a:hover::before {
+  width: 100%;
 }
 
 a:hover {
   color: var(--cyberpunk-light) !important;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.6) !important;
+  text-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.6),
+    0 0 20px rgba(0, 255, 255, 0.4) !important;
 }
 
-/* 标题霓虹效果 */
+/* 标题霓虹效果 - 增强版 */
 h1, h2, h3, h4, h5, h6 {
   color: var(--cyberpunk-primary) !important;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
+  text-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.5),
+    0 0 20px rgba(0, 255, 255, 0.3) !important;
+  position: relative;
 }
 
-/* 搜索框毛玻璃效果 - iOS风格 */
+h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyberpunk-primary), var(--cyberpunk-secondary));
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px var(--cyberpunk-primary);
+}
+
+h1:hover::before, h2:hover::before, h3:hover::before, h4:hover::before, h5:hover::before, h6:hover::before {
+  width: 100%;
+}
+
+/* 搜索框毛玻璃效果 - 增强版 */
 #search-form {
   background: rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 25px !important;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    0 0 30px rgba(0, 255, 255, 0.1) !important;
 }
 
 #search-form input {
   background: transparent !important;
   color: var(--cyberpunk-primary) !important;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3) !important;
 }
 
 #search-form input::placeholder {
   color: rgba(0, 255, 255, 0.6) !important;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3) !important;
 }
 
-/* 分页毛玻璃效果 - iOS风格 */
+/* 分页毛玻璃效果 - 增强版 */
 .pagination {
   background: rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 10px !important;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    0 0 30px rgba(255, 0, 255, 0.1) !important;
 }
 
 .pagination .page-number {
   color: var(--cyberpunk-primary) !important;
-  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3) !important;
+  text-shadow: 
+    0 0 5px rgba(0, 255, 255, 0.3),
+    0 0 10px rgba(0, 255, 255, 0.2) !important;
+  transition: all 0.3s ease !important;
 }
 
 .pagination .page-number.current {
   background: rgba(0, 255, 255, 0.3) !important;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5) !important;
+  box-shadow: 
+    0 0 15px rgba(0, 255, 255, 0.5),
+    0 0 25px rgba(0, 255, 255, 0.3) !important;
+  border: 1px solid var(--cyberpunk-primary) !important;
+}
+
+.pagination .page-number:hover {
+  background: rgba(0, 255, 255, 0.2) !important;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4) !important;
 }
 
 /* 响应式设计 */
@@ -335,23 +623,95 @@ h1, h2, h3, h4, h5, h6 {
     backdrop-filter: blur(15px) !important;
     -webkit-backdrop-filter: blur(15px) !important;
   }
+  
+  .neon-string {
+    width: 3px;
+  }
+  
+  .neon-string.left {
+    left: 10px;
+  }
+  
+  .neon-string.right {
+    right: 10px;
+  }
 }
 
-/* 加载动画 */
+/* 加载动画 - 增强版 */
 @keyframes cyberpunk-loading {
   0% {
     transform: rotate(0deg);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    box-shadow: 
+      0 0 20px rgba(0, 255, 255, 0.5),
+      0 0 40px rgba(0, 255, 255, 0.3);
   }
   50% {
-    box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+    box-shadow: 
+      0 0 30px rgba(255, 0, 255, 0.5),
+      0 0 50px rgba(255, 0, 255, 0.3);
   }
   100% {
     transform: rotate(360deg);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    box-shadow: 
+      0 0 20px rgba(0, 255, 255, 0.5),
+      0 0 40px rgba(0, 255, 255, 0.3);
   }
 }
 
 .loading {
   animation: cyberpunk-loading 2s linear infinite;
+}
+
+/* 霓虹灯招牌文字效果 */
+.neon-text {
+  color: var(--cyberpunk-primary);
+  text-shadow: 
+    0 0 5px var(--cyberpunk-primary),
+    0 0 10px var(--cyberpunk-primary),
+    0 0 15px var(--cyberpunk-primary),
+    0 0 20px var(--cyberpunk-primary);
+  animation: neon-text-flicker 2s ease-in-out infinite alternate;
+}
+
+@keyframes neon-text-flicker {
+  0% {
+    text-shadow: 
+      0 0 5px var(--cyberpunk-primary),
+      0 0 10px var(--cyberpunk-primary),
+      0 0 15px var(--cyberpunk-primary);
+  }
+  100% {
+    text-shadow: 
+      0 0 5px var(--cyberpunk-primary),
+      0 0 10px var(--cyberpunk-primary),
+      0 0 15px var(--cyberpunk-primary),
+      0 0 20px var(--cyberpunk-primary),
+      0 0 25px var(--cyberpunk-primary);
+  }
+}
+
+/* 霓虹灯边框效果 */
+.neon-border {
+  border: 2px solid var(--cyberpunk-primary);
+  box-shadow: 
+    0 0 10px var(--cyberpunk-primary),
+    0 0 20px var(--cyberpunk-primary),
+    inset 0 0 10px rgba(0, 255, 255, 0.1);
+  animation: neon-border-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes neon-border-pulse {
+  0% {
+    box-shadow: 
+      0 0 10px var(--cyberpunk-primary),
+      0 0 20px var(--cyberpunk-primary),
+      inset 0 0 10px rgba(0, 255, 255, 0.1);
+  }
+  100% {
+    box-shadow: 
+      0 0 15px var(--cyberpunk-primary),
+      0 0 25px var(--cyberpunk-primary),
+      0 0 35px var(--cyberpunk-primary),
+      inset 0 0 15px rgba(0, 255, 255, 0.2);
+  }
 }
