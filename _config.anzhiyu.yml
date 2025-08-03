@@ -1203,11 +1203,301 @@ dynamicEffect:
 inject:
   head:
     # 自定义css
-    # - <link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'">
+    - <style>
+      /* 赛博朋克风格卡片化和毛玻璃效果 */
+      :root {
+        --cyberpunk-primary: #00ffff;
+        --cyberpunk-secondary: #ff00ff;
+        --cyberpunk-accent: #ffff00;
+        --cyberpunk-bg: rgba(0, 0, 0, 0.8);
+        --cyberpunk-card-bg: rgba(0, 0, 0, 0.6);
+        --cyberpunk-border: 1px solid var(--cyberpunk-primary);
+        --cyberpunk-glow: 0 0 20px var(--cyberpunk-primary);
+        --cyberpunk-text-shadow: 0 0 10px var(--cyberpunk-primary);
+      }
+
+      /* 毛玻璃效果基础样式 */
+      .cyberpunk-glass {
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 255, 255, 0.1);
+      }
+
+      /* 文章卡片赛博朋克化 */
+      .recent-post-item {
+        background: var(--cyberpunk-card-bg) !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+        border: var(--cyberpunk-border) !important;
+        box-shadow: var(--cyberpunk-glow) !important;
+        transition: all 0.3s ease !important;
+        position: relative !important;
+        overflow: hidden !important;
+      }
+
+      .recent-post-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+      }
+
+      .recent-post-item:hover::before {
+        left: 100%;
+      }
+
+      .recent-post-item:hover {
+        transform: translateY(-5px) !important;
+        box-shadow: 0 0 30px var(--cyberpunk-primary) !important;
+        border-color: var(--cyberpunk-secondary) !important;
+      }
+
+      /* 侧边栏卡片赛博朋克化 */
+      .card-info, .card-archives, .card-tags, .card-webinfo {
+        background: var(--cyberpunk-card-bg) !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+        border: var(--cyberpunk-border) !important;
+        box-shadow: var(--cyberpunk-glow) !important;
+        transition: all 0.3s ease !important;
+      }
+
+      .card-info:hover, .card-archives:hover, .card-tags:hover, .card-webinfo:hover {
+        box-shadow: 0 0 25px var(--cyberpunk-secondary) !important;
+        border-color: var(--cyberpunk-accent) !important;
+      }
+
+      /* 导航菜单赛博朋克化 */
+      .menu-list .menu-list-item a {
+        background: var(--cyberpunk-card-bg) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(0, 255, 255, 0.2) !important;
+        color: var(--cyberpunk-primary) !important;
+        text-shadow: var(--cyberpunk-text-shadow) !important;
+        transition: all 0.3s ease !important;
+      }
+
+      .menu-list .menu-list-item a:hover {
+        background: rgba(0, 255, 255, 0.1) !important;
+        border-color: var(--cyberpunk-secondary) !important;
+        box-shadow: 0 0 15px var(--cyberpunk-primary) !important;
+      }
+
+      /* 按钮赛博朋克化 */
+      .card-info .card-info-social-icons .social-icon {
+        background: var(--cyberpunk-card-bg) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid var(--cyberpunk-primary) !important;
+        color: var(--cyberpunk-primary) !important;
+        transition: all 0.3s ease !important;
+      }
+
+      .card-info .card-info-social-icons .social-icon:hover {
+        background: var(--cyberpunk-primary) !important;
+        color: #000 !important;
+        box-shadow: 0 0 20px var(--cyberpunk-primary) !important;
+      }
+
+      /* 标签赛博朋克化 */
+      .card-tags .card-tag-cloud a {
+        background: var(--cyberpunk-card-bg) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        border: 1px solid var(--cyberpunk-primary) !important;
+        color: var(--cyberpunk-primary) !important;
+        text-shadow: var(--cyberpunk-text-shadow) !important;
+        transition: all 0.3s ease !important;
+      }
+
+      .card-tags .card-tag-cloud a:hover {
+        background: var(--cyberpunk-primary) !important;
+        color: #000 !important;
+        box-shadow: 0 0 15px var(--cyberpunk-primary) !important;
+      }
+
+      /* 归档赛博朋克化 */
+      .card-archives .card-archives-item {
+        background: var(--cyberpunk-card-bg) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        border: 1px solid rgba(0, 255, 255, 0.2) !important;
+        transition: all 0.3s ease !important;
+      }
+
+      .card-archives .card-archives-item:hover {
+        border-color: var(--cyberpunk-secondary) !important;
+        box-shadow: 0 0 15px var(--cyberpunk-secondary) !important;
+      }
+
+      /* 页面背景赛博朋克网格效果 */
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+          linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+        background-size: 50px 50px;
+        pointer-events: none;
+        z-index: -1;
+        animation: gridMove 20s linear infinite;
+      }
+
+      @keyframes gridMove {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(50px, 50px); }
+      }
+
+      /* 滚动条赛博朋克化 */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--cyberpunk-bg);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--cyberpunk-primary);
+        border-radius: 4px;
+        box-shadow: 0 0 10px var(--cyberpunk-primary);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--cyberpunk-secondary);
+        box-shadow: 0 0 15px var(--cyberpunk-secondary);
+      }
+
+      /* 文字赛博朋克化 */
+      .card-info .card-info-name {
+        color: var(--cyberpunk-primary) !important;
+        text-shadow: var(--cyberpunk-text-shadow) !important;
+      }
+
+      .card-info .card-info-description {
+        color: var(--cyberpunk-accent) !important;
+        text-shadow: 0 0 5px var(--cyberpunk-accent) !important;
+      }
+
+      /* 技能点赛博朋克化 */
+      .card-info .card-info-skillgroup .skill-info .skill-name {
+        color: var(--cyberpunk-primary) !important;
+        text-shadow: var(--cyberpunk-text-shadow) !important;
+      }
+
+      /* 响应式优化 */
+      @media (max-width: 768px) {
+        .cyberpunk-glass {
+          backdrop-filter: blur(5px) !important;
+          -webkit-backdrop-filter: blur(5px) !important;
+        }
+      }
+      </style>
 
   bottom:
     # 自定义js
-    # - <script src="/js/xxx"></script>
+    - <script>
+      // 赛博朋克动态效果
+      document.addEventListener('DOMContentLoaded', function() {
+        // 霓虹灯闪烁效果
+        function addNeonEffect() {
+          const elements = document.querySelectorAll('.card-info, .card-archives, .card-tags, .card-webinfo, .recent-post-item');
+          elements.forEach(element => {
+            element.addEventListener('mouseenter', function() {
+              this.style.animation = 'neonPulse 1s infinite alternate';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+              this.style.animation = '';
+            });
+          });
+        }
+
+        // 添加霓虹脉冲动画
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes neonPulse {
+            0% { box-shadow: 0 0 20px var(--cyberpunk-primary); }
+            100% { box-shadow: 0 0 30px var(--cyberpunk-primary), 0 0 40px var(--cyberpunk-primary); }
+          }
+          
+          @keyframes cyberpunkGlitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+          }
+          
+          .cyberpunk-glitch {
+            animation: cyberpunkGlitch 0.3s ease-in-out;
+          }
+        `;
+        document.head.appendChild(style);
+
+        // 初始化效果
+        addNeonEffect();
+
+        // 添加赛博朋克音效（可选）
+        function addCyberpunkSound() {
+          const elements = document.querySelectorAll('.recent-post-item, .card-info, .card-archives, .card-tags, .card-webinfo');
+          elements.forEach(element => {
+            element.addEventListener('click', function() {
+              // 创建音频上下文（需要用户交互）
+              if (typeof AudioContext !== 'undefined' || typeof webkitAudioContext !== 'undefined') {
+                const audioContext = new (AudioContext || webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.1);
+                
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.1);
+              }
+            });
+          });
+        }
+
+        // 添加故障效果
+        function addGlitchEffect() {
+          const titles = document.querySelectorAll('.recent-post-item .item-title, .card-info .card-info-name');
+          titles.forEach(title => {
+            title.addEventListener('mouseenter', function() {
+              this.classList.add('cyberpunk-glitch');
+              setTimeout(() => {
+                this.classList.remove('cyberpunk-glitch');
+              }, 300);
+            });
+          });
+        }
+
+        // 初始化所有效果
+        setTimeout(() => {
+          addNeonEffect();
+          addGlitchEffect();
+          // addCyberpunkSound(); // 取消注释启用音效
+        }, 1000);
+      });
+      </script>
 
 # CDN
 # Don't modify the following settings unless you know how they work
