@@ -71,16 +71,16 @@ body::after {
   }
 }
 
-/* 毛玻璃效果容器 */
+/* 毛玻璃效果容器 - iOS风格 */
 .glass-container {
-  background: rgba(10, 10, 10, 0.7);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 15px;
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -105,13 +105,13 @@ body::after {
   }
 }
 
-/* 导航栏毛玻璃效果 */
+/* 导航栏毛玻璃效果 - iOS风格 */
 #nav {
-  background: rgba(10, 10, 10, 0.8) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
-  border-bottom: 1px solid rgba(0, 255, 255, 0.3) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
 }
 
 #nav .nav-item a {
@@ -126,25 +126,25 @@ body::after {
   transform: translateY(-2px) !important;
 }
 
-/* 文章卡片毛玻璃效果 */
+/* 文章卡片毛玻璃效果 - iOS风格 */
 .card-info {
-  background: rgba(10, 10, 10, 0.7) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 15px !important;
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
   transition: all 0.3s ease !important;
 }
 
 .card-info:hover {
   transform: translateY(-5px) !important;
   box-shadow: 
-    0 15px 40px rgba(0, 0, 0, 0.4),
-    0 0 20px rgba(0, 255, 255, 0.3) !important;
-  border-color: var(--cyberpunk-primary) !important;
+    0 15px 40px rgba(0, 0, 0, 0.15),
+    0 0 20px rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
 /* 文章标题霓虹效果 */
@@ -158,16 +158,16 @@ body::after {
   text-shadow: 0 0 20px rgba(0, 255, 255, 0.8) !important;
 }
 
-/* 侧边栏毛玻璃效果 */
+/* 侧边栏毛玻璃效果 - iOS风格 */
 #aside-content {
-  background: rgba(10, 10, 10, 0.7) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 0, 255, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 15px !important;
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
 }
 
 /* 头像霓虹边框 */
@@ -219,12 +219,12 @@ body::after {
   transform: translateY(-2px) !important;
 }
 
-/* 页脚毛玻璃效果 */
+/* 页脚毛玻璃效果 - iOS风格 */
 #footer {
-  background: rgba(10, 10, 10, 0.8) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
-  border-top: 1px solid rgba(255, 255, 0, 0.3) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
 /* 滚动条霓虹效果 */
@@ -246,14 +246,14 @@ body::after {
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
 }
 
-/* 代码块毛玻璃效果 */
+/* 代码块毛玻璃效果 - iOS风格 */
 .highlight {
-  background: rgba(10, 10, 10, 0.8) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 10px !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* 链接霓虹效果 */
@@ -274,12 +274,12 @@ h1, h2, h3, h4, h5, h6 {
   text-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
 }
 
-/* 搜索框毛玻璃效果 */
+/* 搜索框毛玻璃效果 - iOS风格 */
 #search-form {
-  background: rgba(10, 10, 10, 0.7) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 25px !important;
 }
 
@@ -292,12 +292,12 @@ h1, h2, h3, h4, h5, h6 {
   color: rgba(0, 255, 255, 0.6) !important;
 }
 
-/* 分页毛玻璃效果 */
+/* 分页毛玻璃效果 - iOS风格 */
 .pagination {
-  background: rgba(10, 10, 10, 0.7) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 10px !important;
 }
 

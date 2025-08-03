@@ -9,9 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // 添加霓虹灯效果
     addNeonEffects();
     
-    // 添加鼠标跟随效果
-    addMouseFollowEffect();
-    
     // 添加打字机效果
     addTypewriterEffect();
     
@@ -114,33 +111,7 @@ function addNeonEffects() {
     });
 }
 
-// 添加鼠标跟随效果
-function addMouseFollowEffect() {
-    const cursor = document.createElement('div');
-    cursor.style.position = 'fixed';
-    cursor.style.width = '20px';
-    cursor.style.height = '20px';
-    cursor.style.borderRadius = '50%';
-    cursor.style.background = 'radial-gradient(circle, #00ffff, transparent)';
-    cursor.style.pointerEvents = 'none';
-    cursor.style.zIndex = '9999';
-    cursor.style.transition = 'all 0.1s ease';
-    document.body.appendChild(cursor);
-    
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX - 10 + 'px';
-        cursor.style.top = e.clientY - 10 + 'px';
-    });
-    
-    // 鼠标悬停时扩大光标
-    document.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'scale(1.5)';
-    });
-    
-    document.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'scale(1)';
-    });
-}
+
 
 // 添加打字机效果
 function addTypewriterEffect() {
@@ -201,8 +172,10 @@ style.textContent = `
     }
     
     .glass-container {
+        background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
     
     /* 添加扫描线效果 */
