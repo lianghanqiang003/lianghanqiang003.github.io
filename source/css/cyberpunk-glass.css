@@ -126,36 +126,46 @@ body::after {
   transform: translateY(-2px) !important;
 }
 
-/* 文章卡片毛玻璃效果 - iOS风格 */
+/* 文章卡片样式 - 与导航栏一致 */
 .card-info {
-  background: rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  border-radius: 15px !important;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  background: #2a2a2a !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
   transition: all 0.3s ease !important;
+  margin-bottom: 15px !important;
 }
 
 .card-info:hover {
-  transform: translateY(-5px) !important;
-  box-shadow: 
-    0 15px 40px rgba(0, 0, 0, 0.15),
-    0 0 20px rgba(255, 255, 255, 0.2) !important;
-  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* 文章标题霓虹效果 */
+/* 文章标题样式 - 白色文字 */
 .card-info .card-title {
-  color: var(--cyberpunk-primary) !important;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
-  font-weight: bold !important;
+  color: #ffffff !important;
+  text-shadow: none !important;
+  font-weight: 600 !important;
+  font-size: 1.1em !important;
 }
 
 .card-info:hover .card-title {
-  text-shadow: 0 0 20px rgba(0, 255, 255, 0.8) !important;
+  color: #ffffff !important;
+  text-shadow: none !important;
+}
+
+/* 文章卡片内所有文字样式 - 白色 */
+.card-info p,
+.card-info .article-meta,
+.card-info .article-date,
+.card-info .article-summary {
+  color: #ffffff !important;
+  text-shadow: none !important;
+}
+
+.card-info .article-meta i,
+.card-info .article-date i {
+  color: #cccccc !important;
 }
 
 /* 侧边栏毛玻璃效果 - iOS风格 */
@@ -186,21 +196,24 @@ body::after {
   }
 }
 
-/* 分类和标签霓虹效果 */
+/* 分类和标签样式 - 与导航栏一致 */
 .card-info .article-category a,
 .card-info .article-tag a {
-  background: rgba(255, 0, 255, 0.2) !important;
-  border: 1px solid rgba(255, 0, 255, 0.5) !important;
-  color: var(--cyberpunk-secondary) !important;
-  text-shadow: 0 0 5px rgba(255, 0, 255, 0.5) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  text-shadow: none !important;
   transition: all 0.3s ease !important;
+  border-radius: 4px !important;
+  padding: 2px 8px !important;
+  font-size: 0.9em !important;
 }
 
 .card-info .article-category a:hover,
 .card-info .article-tag a:hover {
-  background: rgba(255, 0, 255, 0.4) !important;
-  box-shadow: 0 0 15px rgba(255, 0, 255, 0.6) !important;
-  transform: scale(1.05) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  box-shadow: none !important;
+  transform: none !important;
 }
 
 /* 按钮霓虹效果 */
