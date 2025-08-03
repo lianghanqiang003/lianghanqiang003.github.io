@@ -249,3 +249,409 @@ function createRippleEffect(x, y) {
         document.body.removeChild(ripple);
     }, 600);
 }
+
+// 霓虹灯效果增强脚本
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 添加霓虹灯串元素
+    addNeonStrings();
+    
+    // 为标题添加霓虹招牌效果
+    addNeonSignEffects();
+    
+    // 为导航栏添加霓虹边框效果
+    addNeonBorderEffects();
+    
+    // 为文章卡片添加霓虹光晕效果
+    addCardNeonEffects();
+    
+    // 为按钮添加霓虹脉冲效果
+    addButtonNeonEffects();
+    
+    // 为头像添加旋转霓虹边框
+    addAvatarNeonEffects();
+    
+    // 为链接添加霓虹下划线效果
+    addLinkNeonEffects();
+    
+    // 为滚动条添加霓虹效果
+    addScrollbarNeonEffects();
+});
+
+// 添加霓虹灯串元素
+function addNeonStrings() {
+    const body = document.body;
+    
+    // 创建左侧霓虹灯串
+    const leftNeonString = document.createElement('div');
+    leftNeonString.className = 'neon-string left';
+    body.appendChild(leftNeonString);
+    
+    // 创建右侧霓虹灯串
+    const rightNeonString = document.createElement('div');
+    rightNeonString.className = 'neon-string right';
+    body.appendChild(rightNeonString);
+    
+    // 创建顶部霓虹灯条
+    const topNeonBar = document.createElement('div');
+    topNeonBar.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, 
+            var(--cyberpunk-red) 0%, 
+            var(--cyberpunk-pink) 25%, 
+            var(--cyberpunk-orange) 50%, 
+            var(--cyberpunk-primary) 75%, 
+            var(--cyberpunk-secondary) 100%);
+        box-shadow: 
+            0 0 10px var(--cyberpunk-red),
+            0 0 20px var(--cyberpunk-red);
+        animation: neon-flicker 2s ease-in-out infinite alternate;
+        z-index: 1000;
+    `;
+    body.appendChild(topNeonBar);
+    
+    // 创建底部霓虹灯条
+    const bottomNeonBar = document.createElement('div');
+    bottomNeonBar.style.cssText = `
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, 
+            var(--cyberpunk-secondary) 0%, 
+            var(--cyberpunk-primary) 25%, 
+            var(--cyberpunk-orange) 50%, 
+            var(--cyberpunk-pink) 75%, 
+            var(--cyberpunk-red) 100%);
+        box-shadow: 
+            0 0 10px var(--cyberpunk-red),
+            0 0 20px var(--cyberpunk-red);
+        animation: neon-flicker 2s ease-in-out infinite alternate;
+        z-index: 1000;
+    `;
+    body.appendChild(bottomNeonBar);
+}
+
+// 为标题添加霓虹招牌效果
+function addNeonSignEffects() {
+    const titles = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    titles.forEach(title => {
+        title.classList.add('neon-sign');
+        
+        // 添加霓虹边框效果
+        title.style.position = 'relative';
+        title.style.padding = '10px';
+        title.style.borderRadius = '5px';
+        title.style.border = '1px solid transparent';
+        title.style.background = 'rgba(0, 255, 255, 0.05)';
+        
+        // 添加霓虹边框动画
+        setInterval(() => {
+            const colors = ['var(--cyberpunk-primary)', 'var(--cyberpunk-secondary)', 'var(--cyberpunk-accent)'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            title.style.borderColor = randomColor;
+            title.style.boxShadow = `0 0 10px ${randomColor}, 0 0 20px ${randomColor}`;
+        }, 2000);
+    });
+}
+
+// 为导航栏添加霓虹边框效果
+function addNeonBorderEffects() {
+    const nav = document.querySelector('#nav');
+    if (nav) {
+        nav.classList.add('neon-border');
+        
+        // 为导航项添加霓虹效果
+        const navItems = nav.querySelectorAll('.nav-item a');
+        navItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.textShadow = `
+                    0 0 10px var(--cyberpunk-primary),
+                    0 0 20px var(--cyberpunk-primary),
+                    0 0 30px var(--cyberpunk-primary)
+                `;
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.textShadow = `
+                    0 0 5px rgba(0, 255, 255, 0.5),
+                    0 0 10px rgba(0, 255, 255, 0.3)
+                `;
+            });
+        });
+    }
+}
+
+// 为文章卡片添加霓虹光晕效果
+function addCardNeonEffects() {
+    const cards = document.querySelectorAll('.card-info');
+    cards.forEach(card => {
+        card.classList.add('neon-border');
+        
+        // 添加霓虹光晕动画
+        setInterval(() => {
+            const colors = ['var(--cyberpunk-primary)', 'var(--cyberpunk-secondary)', 'var(--cyberpunk-accent)'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            card.style.boxShadow = `
+                0 4px 12px rgba(0, 0, 0, 0.4),
+                0 0 30px ${randomColor}40
+            `;
+        }, 3000);
+        
+        // 鼠标悬停时的霓虹效果
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px) scale(1.02)';
+            this.style.boxShadow = `
+                0 8px 25px rgba(0, 0, 0, 0.5),
+                0 0 40px var(--cyberpunk-primary),
+                0 0 60px var(--cyberpunk-secondary)
+            `;
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = `
+                0 2px 8px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(0, 255, 255, 0.1)
+            `;
+        });
+    });
+}
+
+// 为按钮添加霓虹脉冲效果
+function addButtonNeonEffects() {
+    const buttons = document.querySelectorAll('.btn, button');
+    buttons.forEach(button => {
+        button.classList.add('neon-border');
+        
+        // 添加霓虹脉冲动画
+        setInterval(() => {
+            const colors = ['var(--cyberpunk-primary)', 'var(--cyberpunk-secondary)', 'var(--cyberpunk-accent)'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            button.style.borderColor = randomColor;
+            button.style.boxShadow = `
+                0 0 15px ${randomColor},
+                0 0 25px ${randomColor}80
+            `;
+        }, 1500);
+        
+        // 点击时的霓虹爆炸效果
+        button.addEventListener('click', function() {
+            this.style.transform = 'scale(0.95)';
+            this.style.boxShadow = `
+                0 0 30px var(--cyberpunk-primary),
+                0 0 50px var(--cyberpunk-secondary),
+                0 0 70px var(--cyberpunk-accent)
+            `;
+            
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+        });
+    });
+}
+
+// 为头像添加旋转霓虹边框
+function addAvatarNeonEffects() {
+    const avatar = document.querySelector('#aside-content .avatar-img');
+    if (avatar) {
+        // 创建旋转霓虹边框
+        const neonBorder = document.createElement('div');
+        neonBorder.style.cssText = `
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--cyberpunk-primary),
+                var(--cyberpunk-secondary),
+                var(--cyberpunk-accent),
+                var(--cyberpunk-red),
+                var(--cyberpunk-primary)
+            );
+            animation: rotate 3s linear infinite;
+            z-index: -1;
+        `;
+        
+        // 添加旋转动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rotate {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        avatar.style.position = 'relative';
+        avatar.parentNode.insertBefore(neonBorder, avatar);
+    }
+}
+
+// 为链接添加霓虹下划线效果
+function addLinkNeonEffects() {
+    const links = document.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.textShadow = `
+                0 0 10px var(--cyberpunk-primary),
+                0 0 20px var(--cyberpunk-primary),
+                0 0 30px var(--cyberpunk-primary)
+            `;
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.style.textShadow = `
+                0 0 5px rgba(0, 255, 255, 0.3),
+                0 0 10px rgba(0, 255, 255, 0.2)
+            `;
+        });
+    });
+}
+
+// 为滚动条添加霓虹效果
+function addScrollbarNeonEffects() {
+    // 创建自定义滚动条样式
+    const style = document.createElement('style');
+    style.textContent = `
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(10, 10, 10, 0.5);
+            border-radius: 6px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, 
+                var(--cyberpunk-primary), 
+                var(--cyberpunk-secondary), 
+                var(--cyberpunk-accent));
+            border-radius: 6px;
+            box-shadow: 
+                0 0 10px rgba(0, 255, 255, 0.5),
+                0 0 20px rgba(0, 255, 255, 0.3);
+            animation: scrollbar-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes scrollbar-glow {
+            0% {
+                box-shadow: 
+                    0 0 10px rgba(0, 255, 255, 0.5),
+                    0 0 20px rgba(0, 255, 255, 0.3);
+            }
+            100% {
+                box-shadow: 
+                    0 0 15px rgba(0, 255, 255, 0.8),
+                    0 0 25px rgba(0, 255, 255, 0.5);
+            }
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            box-shadow: 
+                0 0 20px rgba(0, 255, 255, 0.8),
+                0 0 30px rgba(0, 255, 255, 0.5);
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// 添加霓虹灯招牌文字效果
+function addNeonTextEffects() {
+    const neonTexts = document.querySelectorAll('.neon-text');
+    neonTexts.forEach(text => {
+        // 添加霓虹闪烁效果
+        setInterval(() => {
+            const colors = ['var(--cyberpunk-primary)', 'var(--cyberpunk-secondary)', 'var(--cyberpunk-accent)'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            text.style.color = randomColor;
+            text.style.textShadow = `
+                0 0 5px ${randomColor},
+                0 0 10px ${randomColor},
+                0 0 15px ${randomColor},
+                0 0 20px ${randomColor}
+            `;
+        }, 1000);
+    });
+}
+
+// 添加霓虹灯网格背景
+function addNeonGridBackground() {
+    const canvas = document.createElement('canvas');
+    canvas.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -3;
+        opacity: 0.3;
+    `;
+    document.body.appendChild(canvas);
+    
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    function drawGrid() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // 绘制霓虹网格
+        ctx.strokeStyle = 'rgba(0, 255, 255, 0.3)';
+        ctx.lineWidth = 1;
+        
+        // 垂直线
+        for (let x = 0; x < canvas.width; x += 50) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, canvas.height);
+            ctx.stroke();
+        }
+        
+        // 水平线
+        for (let y = 0; y < canvas.height; y += 50) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(canvas.width, y);
+            ctx.stroke();
+        }
+    }
+    
+    drawGrid();
+    
+    // 窗口大小改变时重新绘制
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        drawGrid();
+    });
+}
+
+// 初始化所有霓虹灯效果
+function initNeonEffects() {
+    addNeonStrings();
+    addNeonSignEffects();
+    addNeonBorderEffects();
+    addCardNeonEffects();
+    addButtonNeonEffects();
+    addAvatarNeonEffects();
+    addLinkNeonEffects();
+    addScrollbarNeonEffects();
+    addNeonTextEffects();
+    addNeonGridBackground();
+}
+
+// 页面加载完成后初始化
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNeonEffects);
+} else {
+    initNeonEffects();
+}
