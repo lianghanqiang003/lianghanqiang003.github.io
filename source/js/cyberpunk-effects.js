@@ -1,278 +1,245 @@
-// 赛博朋克特效增强脚本
+// 优化版赛博朋克特效脚本 - 性能友好
 
 // 等待DOM加载完成
 document.addEventListener('DOMContentLoaded', function() {
     
-    // 创建动态背景粒子
-    createParticleBackground();
+    // 添加基础交互效果
+    addBasicInteractions();
     
-    // 添加霓虹灯效果
-    addNeonEffects();
+    // 添加平滑滚动
+    addSmoothScrolling();
     
-    // 添加鼠标跟随效果
-    addMouseFollowEffect();
+    // 添加懒加载
+    addLazyLoading();
     
-    // 添加打字机效果
-    addTypewriterEffect();
+    // 添加主题切换功能
+    addThemeToggle();
     
-    // 添加滚动视差效果
-    addParallaxEffect();
+    console.log('🚀 网站优化完成 - 性能提升版本已加载');
 });
 
-// 创建动态背景粒子
-function createParticleBackground() {
-    const canvas = document.createElement('canvas');
-    canvas.style.position = 'fixed';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.style.zIndex = '-3';
-    canvas.style.pointerEvents = 'none';
-    document.body.appendChild(canvas);
-    
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    
-    const particles = [];
-    const particleCount = 50;
-    
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.vx = (Math.random() - 0.5) * 2;
-            this.vy = (Math.random() - 0.5) * 2;
-            this.size = Math.random() * 3 + 1;
-            this.color = `hsl(${Math.random() * 60 + 180}, 100%, 50%)`;
-        }
-        
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
-            
-            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-        }
-        
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = this.color;
-            ctx.fill();
-        }
-    }
-    
-    // 创建粒子
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-    }
-    
-    // 动画循环
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        particles.forEach(particle => {
-            particle.update();
-            particle.draw();
+// 添加基础交互效果
+function addBasicInteractions() {
+    // 为卡片添加微妙的悬停效果
+    const cards = document.querySelectorAll('.recent-post-info, .glass-container');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-4px)';
         });
         
-        requestAnimationFrame(animate);
-    }
-    
-    animate();
-    
-    // 窗口大小改变时重新设置画布
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
-}
-
-// 添加霓虹灯效果
-function addNeonEffects() {
-    // 为所有标题添加霓虹灯效果
-    const titles = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
-    titles.forEach(title => {
-        title.style.textShadow = '0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff';
-        title.style.animation = 'neonPulse 2s ease-in-out infinite alternate';
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
     });
     
-    // 为链接添加霓虹灯效果
+    // 为链接添加微妙的反馈
     const links = document.querySelectorAll('a');
     links.forEach(link => {
         link.addEventListener('mouseenter', function() {
-            this.style.textShadow = '0 0 10px #00ffff, 0 0 20px #00ffff';
-            this.style.color = '#00ffff';
+            this.style.color = 'var(--primary-cyan)';
         });
         
         link.addEventListener('mouseleave', function() {
-            this.style.textShadow = '0 0 5px rgba(0, 255, 255, 0.3)';
-            this.style.color = '#00ffff';
+            this.style.color = '';
         });
     });
 }
 
-// 添加鼠标跟随效果
-function addMouseFollowEffect() {
-    const cursor = document.createElement('div');
-    cursor.style.position = 'fixed';
-    cursor.style.width = '20px';
-    cursor.style.height = '20px';
-    cursor.style.borderRadius = '50%';
-    cursor.style.background = 'radial-gradient(circle, #00ffff, transparent)';
-    cursor.style.pointerEvents = 'none';
-    cursor.style.zIndex = '9999';
-    cursor.style.transition = 'all 0.1s ease';
-    document.body.appendChild(cursor);
-    
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX - 10 + 'px';
-        cursor.style.top = e.clientY - 10 + 'px';
-    });
-    
-    // 鼠标悬停时扩大光标
-    document.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'scale(1.5)';
-    });
-    
-    document.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'scale(1)';
-    });
-}
-
-// 添加打字机效果
-function addTypewriterEffect() {
-    const subtitle = document.querySelector('.subtitle');
-    if (subtitle) {
-        const text = subtitle.textContent;
-        subtitle.textContent = '';
-        
-        let i = 0;
-        const typeWriter = () => {
-            if (i < text.length) {
-                subtitle.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
+// 添加平滑滚动
+function addSmoothScrolling() {
+    // 为页面内锚点链接添加平滑滚动
+    const anchors = document.querySelectorAll('a[href^="#"]');
+    anchors.forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
-        };
-        
-        typeWriter();
-    }
-}
-
-// 添加滚动视差效果
-function addParallaxEffect() {
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const parallax = document.querySelectorAll('.glass-container');
-        
-        parallax.forEach(element => {
-            const speed = 0.5;
-            element.style.transform = `translateY(${scrolled * speed}px)`;
         });
     });
 }
 
-// 添加CSS动画
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes neonPulse {
-        0% {
-            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
-        }
-        100% {
-            text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
-        }
+// 添加懒加载
+function addLazyLoading() {
+    // 使用 Intersection Observer 实现图片懒加载
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        observer.unobserve(img);
+                    }
+                }
+            });
+        });
+        
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        lazyImages.forEach(img => imageObserver.observe(img));
     }
-    
-    @keyframes cyberpunkGlow {
-        0%, 100% {
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-        }
-        50% {
-            box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
-        }
-    }
-    
-    .cyberpunk-glow {
-        animation: cyberpunkGlow 2s ease-in-out infinite;
-    }
-    
-    .glass-container {
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-    }
-    
-    /* 添加扫描线效果 */
-    .scan-line {
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .scan-line::before {
-        content: '';
-        position: absolute;
-        top: -100%;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(transparent, rgba(0, 255, 255, 0.3), transparent);
-        animation: scan 3s linear infinite;
-    }
-    
-    @keyframes scan {
-        0% {
-            top: -100%;
-        }
-        100% {
-            top: 100%;
-        }
-    }
-`;
-
-document.head.appendChild(style);
-
-// 为页面添加扫描线效果
-document.addEventListener('DOMContentLoaded', () => {
-    const containers = document.querySelectorAll('.card-info, #aside-content');
-    containers.forEach(container => {
-        container.classList.add('scan-line');
-    });
-});
-
-// 添加键盘特效
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-        createRippleEffect(e.clientX, e.clientY);
-    }
-});
-
-function createRippleEffect(x, y) {
-    const ripple = document.createElement('div');
-    ripple.style.position = 'fixed';
-    ripple.style.left = x + 'px';
-    ripple.style.top = y + 'px';
-    ripple.style.width = '0';
-    ripple.style.height = '0';
-    ripple.style.borderRadius = '50%';
-    ripple.style.background = 'radial-gradient(circle, #00ffff, transparent)';
-    ripple.style.pointerEvents = 'none';
-    ripple.style.zIndex = '9998';
-    ripple.style.transition = 'all 0.6s ease-out';
-    
-    document.body.appendChild(ripple);
-    
-    setTimeout(() => {
-        ripple.style.width = '200px';
-        ripple.style.height = '200px';
-        ripple.style.left = (x - 100) + 'px';
-        ripple.style.top = (y - 100) + 'px';
-        ripple.style.opacity = '0';
-    }, 10);
-    
-    setTimeout(() => {
-        document.body.removeChild(ripple);
-    }, 600);
 }
+
+// 添加主题切换功能
+function addThemeToggle() {
+    // 检查用户的主题偏好
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('theme');
+    
+    // 应用主题
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    } else if (prefersDark) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+    
+    // 监听系统主题变化
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        }
+    });
+}
+
+// 添加键盘导航支持
+function addKeyboardNavigation() {
+    document.addEventListener('keydown', function(e) {
+        // ESC 键关闭模态框或返回顶部
+        if (e.key === 'Escape') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // 空格键暂停/播放动画（如果有的话）
+        if (e.key === ' ' && e.target === document.body) {
+            e.preventDefault();
+            // 可以在这里添加动画控制逻辑
+        }
+    });
+}
+
+// 性能监控
+function performanceMonitoring() {
+    // 监控页面加载性能
+    window.addEventListener('load', function() {
+        const perfData = performance.timing;
+        const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+        
+        if (pageLoadTime > 3000) {
+            console.warn('⚠️ 页面加载时间较长:', pageLoadTime + 'ms');
+        } else {
+            console.log('✅ 页面加载性能良好:', pageLoadTime + 'ms');
+        }
+    });
+}
+
+// 添加滚动指示器
+function addScrollIndicator() {
+    const indicator = document.createElement('div');
+    indicator.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary-cyan), var(--accent-purple));
+        z-index: 9999;
+        transition: width 0.1s ease;
+    `;
+    document.body.appendChild(indicator);
+    
+    let ticking = false;
+    
+    function updateScrollIndicator() {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        
+        indicator.style.width = scrollPercent + '%';
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateScrollIndicator);
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', requestTick, { passive: true });
+}
+
+// 添加简单的搜索功能增强
+function enhanceSearch() {
+    const searchInput = document.querySelector('input[type="search"]');
+    if (searchInput) {
+        let searchTimeout;
+        
+        searchInput.addEventListener('input', function(e) {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                // 在这里可以添加实时搜索逻辑
+                console.log('搜索:', e.target.value);
+            }, 300);
+        });
+    }
+}
+
+// 初始化所有增强功能
+function initializeEnhancements() {
+    addKeyboardNavigation();
+    addScrollIndicator();
+    enhanceSearch();
+    performanceMonitoring();
+}
+
+// 在DOM加载完成后初始化增强功能
+document.addEventListener('DOMContentLoaded', initializeEnhancements);
+
+// 添加页面可见性检测，优化性能
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        // 页面不可见时暂停动画
+        document.body.style.animationPlayState = 'paused';
+    } else {
+        // 页面可见时恢复动画
+        document.body.style.animationPlayState = 'running';
+    }
+});
+
+// 防抖函数工具
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// 节流函数工具
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// 导出工具函数（如果需要的话）
+window.BlogUtils = {
+    debounce,
+    throttle
+};
